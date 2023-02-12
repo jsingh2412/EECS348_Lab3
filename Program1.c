@@ -13,18 +13,18 @@ int main()
 	FILE* ptr;
 	int numOfInputs = 12;
 	char* months[] = { "January",
-					"February",
-					"March",
-					"April",
-					"May",
-					"June",
-					"July",
-					"August",
-					"September",
-					"October",
-					"November",
-					"December"};
-	double costsPerMonths[numOfInputs];
+			"February",
+			"March",
+			"April",
+			"May",
+			"June",
+			"July",
+			"August",
+			"September",
+			"October",
+			"November",
+			"December"};
+	double costsPerMonths[12];
 	ptr = fopen("input.txt", "r");
 	//if (NULL == ptr)
 	//{
@@ -36,12 +36,14 @@ int main()
 		fscanf(ptr,"%lf",&costsPerMonths[i]);
 	}
 	fclose(ptr);
+	printf("Monthly sales report for 2022:\n");
 	printf("Month       Sales\n");
 	for(int i=0; i<numOfInputs; i++)
 	{
 		printf("%-12s%.2lf\n",months[i], costsPerMonths[i]);
 	}
-	double min,max,minIndex,maxIndex;
+	double min,max;
+	int minIndex,maxIndex;
 	double avg = 0;
 	min=costsPerMonths[0];
 	max=costsPerMonths[0];
@@ -61,7 +63,7 @@ int main()
 			maxIndex=i;
 		}
 	}
-	printf("Sales summary:\n\n");
+	printf("\nSales summary:\n\n");
 	printf("Minimum sales:     $%.2lf  (%s)\n",min,months[minIndex]);
 	printf("Maximum sales:     $%.2lf  (%s)\n",max,months[maxIndex]);
 	printf("Minimum sales:     $%.2lf\n",avg/12);
@@ -97,6 +99,6 @@ int main()
 		monthsRemaining--;
 		printf(" %-10s$%.2lf\n", months[maxIndex], costsPerMonths[maxIndex]);
 	}
-	
+
 	return 0;
 }
